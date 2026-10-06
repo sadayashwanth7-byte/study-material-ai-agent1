@@ -86,6 +86,7 @@ def create_chunks(text, chunk_size=1000, overlap=200):
 # -----------------------------
 # Create FAISS database
 # -----------------------------
+@st.cache_resource
 def create_index(chunks):
 
     embeddings = embedding_model.encode(chunks)
@@ -185,9 +186,12 @@ Give a clear and concise answer.
 """
 
         interaction = client.interactions.create(
-            model="gemini-3.8-flash",
-            input=prompt
-        )
+    model="gemini-3.8-flash",
+    input=prompt,
+    generation_config={
+        "thinking_level": "low"
+    }
+)
 
         return {
             "answer": interaction.output_text
