@@ -185,7 +185,7 @@ USER QUESTION:
 Give a clear and concise answer.
 """
 
-                interaction = client.interactions.create(
+            interaction = client.interactions.create(
             model="gemini-3.5-flash-lite",
             input=prompt,
             generation_config={
