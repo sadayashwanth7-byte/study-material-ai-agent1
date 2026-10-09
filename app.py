@@ -185,13 +185,13 @@ USER QUESTION:
 Give a clear and concise answer.
 """
 
-        interaction = client.interactions.create(
-    model="gemini-3.8-flash",
-    input=prompt,
-    generation_config={
-        "thinking_level": "low"
-    }
-)
+                interaction = client.interactions.create(
+            model="gemini-3.5-flash-lite",
+            input=prompt,
+            generation_config={
+                "thinking_level": "minimal"
+            }
+        )
 
         return {
             "answer": interaction.output_text
